@@ -250,17 +250,71 @@ h1 {
   color: #666;
 }
 
-.hidden-input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  width: 0;
-  height: 0;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0;
+.number-pad {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
 }
+
+.number-pad-row {
+  display: flex;
+  gap: 4px;
+  width: 456px;
+  max-width: 100%;
+  justify-content: center;
+}
+
+.number-pad-button {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  background: white;
+  color: #667eea;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.number-pad-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+}
+
+.number-pad-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.number-pad-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: #ccc;
+  color: #999;
+}
+
+.number-pad-button.highlighted {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #764ba2;
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+}
+
+.number-pad-button.highlighted:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5568d3 0%, #653a91 100%);
+  transform: translateY(-2px);
+}
+
 
 /* Responsive design */
 @media (max-width: 600px) {
@@ -273,8 +327,8 @@ h1 {
   }
 
   .sudoku-cell {
-    width: 35px;
-    height: 35px;
+    width: 10vw;
+    height: 10vw;
     font-size: 18px;
   }
 
@@ -285,6 +339,30 @@ h1 {
 
   .controls-section label {
     min-width: auto;
+  }
+
+  .controls-section.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+
+  .controls-section.buttons-container .btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .number-pad-row {
+    width: 100%;
+    gap: 3px;
+  }
+
+  .number-pad-button {
+    width: calc((100% - 24px) / 9);
+    height: 40px;
+    font-size: 16px;
   }
 }
 

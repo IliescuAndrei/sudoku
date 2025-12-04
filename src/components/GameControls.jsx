@@ -25,7 +25,7 @@ function GameControls({
         </select>
       </div>
       
-      <div className="controls-section">
+      <div className="controls-section buttons-container">
         <button onClick={onNewGame} className="btn btn-primary">
           New Game
         </button>

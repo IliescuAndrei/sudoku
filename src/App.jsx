@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import SudokuGrid from './components/SudokuGrid';
 import GameControls from './components/GameControls';
+import NumberPad from './components/NumberPad';
 import { generatePuzzle } from './utils/sudokuGenerator';
 import { getAllErrorCells, isSolved } from './utils/sudokuValidator';
 import { solveSudoku } from './utils/sudokuSolver';
@@ -170,7 +171,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Sudoku Game</h1>
+      <h1>Sudoku4Nasuku</h1>
       <GameControls
         difficulty={difficulty}
         onDifficultyChange={handleDifficultyChange}
@@ -191,6 +192,14 @@ function App() {
         initialPuzzle={initialPuzzle}
         notes={notes}
         noteMode={noteMode}
+      />
+      <NumberPad
+        selectedCell={selectedCell}
+        onCellChange={handleCellChange}
+        initialPuzzle={initialPuzzle}
+        noteMode={noteMode}
+        board={board}
+        notes={notes}
       />
     </div>
   );
